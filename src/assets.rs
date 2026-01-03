@@ -1,4 +1,28 @@
-use bevy::prelude::*;
+use bevy::{
+    asset::{embedded_asset, load_embedded_asset},
+    prelude::*,
+};
+
+pub struct EmbeddedAssetPlugin;
+
+impl Plugin for EmbeddedAssetPlugin {
+    fn build(&self, app: &mut App) {
+        embedded_asset!(app, "../assets/fonts/KOMIKAP_.ttf");
+        embedded_asset!(app, "../assets/graphics/axe.png");
+        embedded_asset!(app, "../assets/graphics/background.png");
+        embedded_asset!(app, "../assets/graphics/bee.png");
+        embedded_asset!(app, "../assets/graphics/branch.png");
+        embedded_asset!(app, "../assets/graphics/cloud.png");
+        embedded_asset!(app, "../assets/graphics/log.png");
+        embedded_asset!(app, "../assets/graphics/player.png");
+        embedded_asset!(app, "../assets/graphics/rip.png");
+        embedded_asset!(app, "../assets/graphics/tree.png");
+        embedded_asset!(app, "../assets/graphics/tree2.png");
+        embedded_asset!(app, "../assets/sounds/chop.wav");
+        embedded_asset!(app, "../assets/sounds/death.wav");
+        embedded_asset!(app, "../assets/sounds/out_of_time.wav");
+    }
+}
 
 #[derive(Resource, Clone)]
 pub struct GameAssets {
@@ -23,23 +47,23 @@ pub struct GameAssets {
     pub default_font: Handle<Font>,
 }
 
-// Load the background at startup
+// Load the assets at startup
 pub fn load(mut commands: Commands, asset_server: Res<AssetServer>) {
     let assets = GameAssets {
-        axe: asset_server.load("graphics/axe.png"),
-        background: asset_server.load("graphics/background.png"),
-        bee: asset_server.load("graphics/bee.png"),
-        branch: asset_server.load("graphics/branch.png"),
-        cloud: asset_server.load("graphics/cloud.png"),
-        log: asset_server.load("graphics/log.png"),
-        player: asset_server.load("graphics/player.png"),
-        headstone: asset_server.load("graphics/rip.png"),
-        tree: asset_server.load("graphics/tree.png"),
-        tree_alt: asset_server.load("graphics/tree2.png"),
-        death: asset_server.load("sounds/death.wav"),
-        out_of_time: asset_server.load("sounds/out_of_time.wav"),
-        chop: asset_server.load("sounds/chop.wav"),
-        default_font: asset_server.load("fonts/KOMIKAP_.ttf"),
+        axe: load_embedded_asset!(&*asset_server, "../assets/graphics/axe.png"),
+        background: load_embedded_asset!(&*asset_server, "../assets/graphics/background.png"),
+        bee: load_embedded_asset!(&*asset_server, "../assets/graphics/bee.png"),
+        branch: load_embedded_asset!(&*asset_server, "../assets/graphics/branch.png"),
+        cloud: load_embedded_asset!(&*asset_server, "../assets/graphics/cloud.png"),
+        log: load_embedded_asset!(&*asset_server, "../assets/graphics/log.png"),
+        player: load_embedded_asset!(&*asset_server, "../assets/graphics/player.png"),
+        headstone: load_embedded_asset!(&*asset_server, "../assets/graphics/rip.png"),
+        tree: load_embedded_asset!(&*asset_server, "../assets/graphics/tree.png"),
+        tree_alt: load_embedded_asset!(&*asset_server, "../assets/graphics/tree2.png"),
+        death: load_embedded_asset!(&*asset_server, "../assets/sounds/death.wav"),
+        out_of_time: load_embedded_asset!(&*asset_server, "../assets/sounds/out_of_time.wav"),
+        chop: load_embedded_asset!(&*asset_server, "../assets/sounds/chop.wav"),
+        default_font: load_embedded_asset!(&*asset_server, "../assets/fonts/KOMIKAP_.ttf"),
     };
 
     commands.insert_resource(assets);

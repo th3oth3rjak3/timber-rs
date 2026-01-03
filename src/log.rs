@@ -9,7 +9,7 @@ use crate::{
 
 pub const LOG_SPEED_Y: f32 = 1500.0;
 pub const LOG_SPEED_X_RIGHT: f32 = 5000.0;
-pub const LOG_SPEED_X_LEFT: f32 = LOG_SPEED_X_RIGHT * -1.0;
+pub const LOG_SPEED_X_LEFT: f32 = -LOG_SPEED_X_RIGHT;
 pub const LOG_SPAWN_Y: f32 = WINDOW_BOTTOM + 360.0;
 pub const LOG_SPAWN_X: f32 = 0.0;
 

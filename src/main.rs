@@ -26,15 +26,18 @@ mod window;
 
 fn main() {
     App::new()
-        .add_plugins(DefaultPlugins.set(WindowPlugin {
-            primary_window: Some(Window {
-                title: "Timber!!".to_string(),
-                resolution: WindowResolution::new(1920, 1080),
-                resizable: false,
+        .add_plugins((
+            DefaultPlugins.set(WindowPlugin {
+                primary_window: Some(Window {
+                    title: "Timber!!".to_string(),
+                    resolution: WindowResolution::new(1920, 1080),
+                    resizable: false,
+                    ..Default::default()
+                }),
                 ..Default::default()
             }),
-            ..Default::default()
-        }))
+            assets::EmbeddedAssetPlugin,
+        ))
         .insert_resource(GameTimer::new(6.0))
         .insert_state(GameState::Paused)
         .add_systems(

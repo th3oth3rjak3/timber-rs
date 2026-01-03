@@ -51,7 +51,7 @@ pub fn update_bee_position(
 
 pub fn get_random_bee_speed() -> f32 {
     let bee_speed = random_range(BEE_SPEED_MIN..=BEE_SPEED_MAX);
-    bee_speed * -1.0
+    -bee_speed
 }
 
 pub fn get_random_bee_y_position() -> f32 {

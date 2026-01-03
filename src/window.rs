@@ -1,7 +1,7 @@
-pub const WINDOW_LEFT: f32 = (1920.0 / 2.0) * -1.0;
+pub const WINDOW_LEFT: f32 = -(1920.0 / 2.0);
 pub const WINDOW_RIGHT: f32 = 1920.0 / 2.0;
 pub const WINDOW_TOP: f32 = 1080.0 / 2.0;
-pub const WINDOW_BOTTOM: f32 = (1080.0 / 2.0) * -1.0;
+pub const WINDOW_BOTTOM: f32 = -(1080.0 / 2.0);
 
 use crate::{
     assets::GameAssets,
